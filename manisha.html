@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Journey ❤️</title>
+
+<style>
+:root{
+  --accent:#ff375f;
+  --glass:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.15);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-font-smoothing:antialiased;
+}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+  "Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background: radial-gradient(circle at 20% 10%, #1f1f3a, #0c0c18 60%);
+  color:white;
+  overflow-x:hidden;
+}
+
+/* SECTION TRANSITIONS */
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:80px 20px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1.2s cubic-bezier(.19,1,.22,1);
+}
+
+section.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* TYPOGRAPHY */
+h1{
+  font-size:2.8rem;
+  font-weight:600;
+  letter-spacing:-0.5px;
+  margin-bottom:30px;
+}
+
+h3{
+  font-weight:500;
+  margin-bottom:10px;
+}
+
+p{
+  line-height:1.7;
+  font-size:1.05rem;
+  opacity:0.9;
+}
+
+/* BUTTON */
+button{
+  margin-top:40px;
+  padding:14px 32px;
+  border-radius:40px;
+  border:none;
+  background:var(--accent);
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  transition:all .4s cubic-bezier(.19,1,.22,1);
+  box-shadow:0 15px 40px rgba(255,55,95,0.35);
+}
+
+button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 20px 50px rgba(255,55,95,0.55);
+}
+
+input{
+  padding:14px 24px;
+  border-radius:30px;
+  border:none;
+  width:260px;
+  text-align:center;
+  font-size:16px;
+  margin-bottom:25px;
+  outline:none;
+}
+
+/* GLASS CARD */
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(22px);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:30px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.45);
+}
+
+/* TIMELINE */
+.timeline{
+  position:relative;
+  max-width:900px;
+}
+
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  width:2px;
+  background:var(--accent);
+  top:0;
+  bottom:0;
+  opacity:0.6;
+}
+
+.timeline-item{
+  width:50%;
+  padding:40px;
+  position:relative;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s cubic-bezier(.19,1,.22,1);
+}
+
+.timeline-item.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.timeline-item.left{ left:0; text-align:right; }
+.timeline-item.right{ left:50%; }
+
+.timeline-item::after{
+  content:'';
+  position:absolute;
+  top:50px;
+  width:14px;
+  height:14px;
+  background:var(--accent);
+  border-radius:50%;
+  box-shadow:0 0 20px var(--accent);
+}
+
+.timeline-item.left::after{ right:-7px; }
+.timeline-item.right::after{ left:-7px; }
+
+img, video{
+  width:100%;
+  border-radius:14px;
+  margin-top:15px;
+}
+
+/* FLOATING HEARTS */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  opacity:0.08;
+  animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+  to{
+    transform:translateY(-120vh);
+    opacity:0;
+  }
+}
+
+/* FIREWORKS */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section id="page1" class="active">
+  <h1>Enter Your Beautiful Name ❤️</h1>
+  <input type="text" id="nameInput" placeholder="Type here...">
+  <button onclick="startJourney()">Begin Our Journey</button>
+</section>
+
+<!-- PAGE 2 -->
+<section id="page2">
+  <h1 id="greeting"></h1>
+
+  <div class="timeline">
+
+    <div class="timeline-item left glass">
+      <h3>Aug 8, 2021 – First Conversation 💬</h3>
+      <img src="images/first1.jpg">
+      <img src="images/first2.jpg">
+    </div>
+
+    <div class="timeline-item right glass">
+      <h3>Aug 10, 2021 – We Fell in Love ❤️</h3>
+      <img src="images/love.jpg">
+    </div>
+
+    <div class="timeline-item left glass">
+      <h3>April 10, 2022 – First Video Call 🎥</h3>
+      <video controls>
+        <source src="videos/videocall.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="timeline-item right glass">
+      <h3>Jan 21, 2023 – Birthday Edit 🎂</h3>
+      <img src="images/birthday.jpg">
+    </div>
+
+    <div class="timeline-item left glass">
+      <h3> 2024 – Our memories 🎥</h3>
+      <video controls>
+        <source src="videos/memories.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="timeline-item left glass">
+      <h3>2025 – Our Moments ✨</h3>
+      <img src="images/2025.png">
+    </div>
+
+  </div>
+
+  <button onclick="nextPage('page3')">Next ❤️</button>
+</section>
+
+<!-- PAGE 3 -->
+<section id="page3">
+  <h1>My Love Letter To You ❤️</h1>
+  <div class="glass" style="max-width:700px;">
+    <p id="typedText"></p>
+  </div>
+  <button onclick="nextPage('page4')">Final Surprise 🎆</button>
+</section>
+
+<!-- PAGE 4 -->
+<section id="page4">
+  <h1>Forever & Always, Manisha ❤️</h1>
+  <img src="images/couple.png" style="max-width:520px;border-radius:24px;">
+</section>
+
+<canvas id="fireworks"></canvas>
+
+<script>
+function startJourney(){
+  const name=document.getElementById("nameInput").value;
+  if(name===""){ alert("Enter your name ❤️"); return; }
+  document.getElementById("greeting").innerText="Our Journey, "+name+" ❤️";
+  switchPage("page2");
+}
+
+function nextPage(id){ switchPage(id); }
+
+function switchPage(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  if(id==="page3"){ typeLetter(); }
+  if(id==="page4"){ startFireworks(); }
+}
+
+/* Scroll reveal */
+const items=document.querySelectorAll(".timeline-item");
+window.addEventListener("scroll",()=>{
+  items.forEach(item=>{
+    const rect=item.getBoundingClientRect();
+    if(rect.top < window.innerHeight-100){
+      item.classList.add("show");
+    }
+  });
+});
+
+/* Subtle Floating Hearts */
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(8+Math.random()*6)+"s";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),14000);
+},2000);
+
+/* Typing Animation */
+const letter=`Dear Manisha,
+
+naa sathi, nee peru manisha ani telisi pettaro teliyaka pettaro kani, prathi vishyam lo nuvu naaku correct ga match aitunave, ah sivudu ki parvathi yelago,
+naa jeevitham lo nuvu ala, nenu 0 lo unnapudu enduku vachayo nak telidu, nv vachina tarvathe naak life telsindi, responsibility vachindhi, andharila costly gifts
+evvalekhapoyina,nuvu naa jeevitham loki vachinanduku yenni jnamalu yettina, terchukolene, prathi life lo malli malli neeke naa prema andisthane,
+naa sathi, 
+I Love you raaa manisha....
+
+Forever yours ❤️`;
+
+function typeLetter(){
+  let i=0;
+  const speed=40;
+  const target=document.getElementById("typedText");
+  target.innerHTML="";
+  function typing(){
+    if(i<letter.length){
+      target.innerHTML+=letter.charAt(i);
+      i++;
+      setTimeout(typing,speed);
+    }
+  }
+  typing();
+}
+
+/* Cinematic Fireworks */
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particles=[];
+
+function startFireworks(){
+  setInterval(()=>{
+    for(let i=0;i<60;i++){
+      particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height/2,
+        r:Math.random()*2,
+        dx:(Math.random()-0.5)*3,
+        dy:(Math.random()-0.5)*3,
+        a:1
+      });
+    }
+  },1000);
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach((p,i)=>{
+    p.x+=p.dx;
+    p.y+=p.dy;
+    p.a-=0.01;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(255,55,95,"+p.a+")";
+    ctx.fill();
+    if(p.a<=0) particles.splice(i,1);
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
+    
